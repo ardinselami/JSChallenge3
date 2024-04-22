@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+</head>
+<body>
+  <div id="gallery">
+    <img id="image" src="" alt="Gallery Image">
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+  </div>
+
+  <script>
+    const images = [
+  'https://randomwordgenerator.com/img/picture-generator/57e6d2474b52aa14f1dc8460962e33791c3ad6e04e5077497c2a7cd49545c0_640.jpg',
+  'https://randomwordgenerator.com/img/picture-generator/54e3d3454a5aa814f1dc8460962e33791c3ad6e04e507440752f72d69f4dc3_640.jpg',
+  'https://randomwordgenerator.com/img/picture-generator/52e2d64a4851a514f1dc8460962e33791c3ad6e04e507441722978d6944acc_640.jpg',
+
+];
+
+
+let currentImageIndex = 0;
+const imageElement = document.getElementById('image');
+const previousButton = document.getElementById('previous');
+const nextButton = document.getElementById('next');
+
+
+function updateImage() {
+  imageElement.src = images[currentImageIndex];
+}
+
+
+function updateButtonStates() {
+  previousButton.disabled = currentImageIndex === 0;
+
+  nextButton.disabled = currentImageIndex === images.length - 1;
+}
+
+function showPreviousImage() {
+  if (currentImageIndex > 0) {
+    currentImageIndex--;
+    updateImage();
+    updateButtonStates();
+  }
+}
+
+function showNextImage() {
+  if (currentImageIndex < images.length - 1) {
+    currentImageIndex++;
+    updateImage();
+    updateButtonStates();
+  }
+}
+
+previousButton.addEventListener('click', showPreviousImage);
+nextButton.addEventListener('click', showNextImage);
+
+updateImage();
+updateButtonStates();
+  </script>
+</body>
+</html>

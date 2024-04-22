@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Images</title>
+</head>
+<body>
+  <img id="image" src="https://randomwordgenerator.com/img/picture-generator/57e6d2474b52aa14f1dc8460962e33791c3ad6e04e5077497c2a7cd49545c0_640.jpg" alt="Image">
+  <button id="previous">Previous</button>
+  <button id="next">Next</button>
+
+<script>
+    const images = [
+  'https://randomwordgenerator.com/img/picture-generator/57e6d2474b52aa14f1dc8460962e33791c3ad6e04e5077497c2a7cd49545c0_640.jpg',
+  'https://randomwordgenerator.com/img/picture-generator/54e3d3454a5aa814f1dc8460962e33791c3ad6e04e507440752f72d69f4dc3_640.jpg',
+  'https://randomwordgenerator.com/img/picture-generator/52e2d64a4851a514f1dc8460962e33791c3ad6e04e507441722978d6944acc_640.jpg',];
+
+  let currentImageIndex = 0;
+
+ const previousButton = document.querySelector('#previous');
+ const nextButton = document.querySelector('#next');
+ const imageElement = document.querySelector('#image');
+
+ previousButton.addEventListener('click', showPreviousImage);
+ nextButton.addEventListener('click', showNextImage);
+
+ function showPreviousImage() {
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  updateImage();
+ }
+
+ function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  updateImage();
+}
+
+function updateImage() {
+  imageElement.src = images[currentImageIndex];
+}
+</script>
+
+</body>
+</html>
